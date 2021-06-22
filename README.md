@@ -1,51 +1,57 @@
 
-# Strategies for cost driven architectures
+# AWS Copilot Sample microservices demonstration
 
 
-This is a reference architecture that shows the evolution of a Node.js application from a monolithic
-application that is deployed directly onto instances with no containerization or orchestration, to a
-containerized microservices architecture orchestrated using Amazon EC2 Container Service.
+This is a reference architecture that shows a containerized Node.js microservices application to using AWS Copilot.
 
+The microservices app was developed from the AWS Sample [here](https://github.com/awslabs/amazon-ecs-nodejs-microservices/tree/master/3-microservices)
+The sample has 3 services defined behind an Amazon Application Load Balancer (ALB), and we create rules on the ALB that direct requests that match a specific path to a specific service.
+So each service will only serve one particular class of REST object, and nothing else. This will give us some significant advantages in our ability to independently monitor and independently scale each service.
 
-## Node.js Microservices Deployed on EC2 Container Service
+## Install and Configure AWS Copilot
 
-This is a sample demonstration of how to implement strategies for implementing cost driven architectures.
+### Prerequisites
+You will need to have the latest version of the AWS CLI installed and configured before running the deployment script. 
+If you need help installing, please follow the link below:
 
-In this sample, we will implement some of the strategies discussed here into a Microservices Nodejs sample application. Lets call it Old (pre-applying some of these strategies) and New/Updated(after implementing strategies).
-
-For deployment follow steps in each folder : 
-
-- [Part One: The old microservices deployment](01-old-microservices/)
-- [Part Two: The new/updated microservices deployment](02-new-microservices/)
+[Installing the AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
 
 
-## Some of the common strategies are listen below :
+## AWS Copilot Commands :
+Deploy the services onto your cluster: 
 
-__Rightsizing:__
+   ```
+   copilot app init social-media-app
+copilot env init --name test --region ap-southeast-1 --default-config
+copilot env init --name prod --region ap-south-1 --default-config --prod
 
-__Stop spending money on undifferentiated heavy lifting:__
+==Repeat for every service start==
+copilot svc init --dockerfile ./services/users/Dockerfile --name 	users --svc-type "Load Balanced Web Service"
+copilot svc deploy --name users --env test
+copilot svc deploy --name users --env prod
+copilot svc show
+==Repeat for every service end==
 
-__Match capacity with demand:__
+copilot pipeline init
+git add copilot/pipeline.yml copilot/buildspec.yml copilot/.workspace && git commit -m "Adding pipeline artifacts" && git push
 
-__Choose right pricing model:__
+copilot pipeline update
+copilot pipeline status
 
-__Expenditure and Usage Awareness:__
+   ```
 
 
 ## References & More
 
-Amazon EC2 Spot Instances Workshop - https://ec2spotworkshops.com/ 
+Explore advanced features – addons, storage, sidecars, etc
 
-Amazon ECS Workshop - https://ecsworkshop.com/ 
+AWS Copilot CLI repository - https://github.com/aws/copilot-cli/
 
-Open source tools 
+AWS Copilot CLI documentation - https://aws.github.io/copilot-cli/
 
-C3vis - https://github.com/ExpediaDotCom/c3vis 
+Guides and resources - https://aws.github.io/copilot-cli/community/guides/ 
 
-Amazon EC2 instance selector - https://github.com/aws/amazon-ec2-instance-selector 
+Containers from the Couch videos - https://www.youtube.com/c/ContainersfromtheCouch/search?query=copilot
 
-AWS Well Architected cost optimization labs - https://www.wellarchitectedlabs.com/cost/ 
-
-3rd party CUDOS Workshop - https://cudos.workshop.aws/ 
 
