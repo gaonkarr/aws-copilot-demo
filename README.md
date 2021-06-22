@@ -30,7 +30,7 @@ Installing AWS Copilot is easy. Checkout the [manual instructions](https://aws.g
 
 For Linux x86 (64-bit), use following command :
 
-``` shell
+```shell
 curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux && \
 chmod +x copilot &&                                 \
 sudo mv copilot /usr/local/bin/copilot &&           \
@@ -44,7 +44,7 @@ At the time of writing this Readme, copilot was at version: v1.8.0
 
 To deploy a sample Load Balanced Web Service application with just one command, run the following command :
 
-```
+```shell
 git clone https://github.com/aws-samples/amazon-ecs-cli-sample-app.git demo-app && \ 
 cd demo-app &&                               \
 copilot init --app demo                      \
@@ -69,25 +69,25 @@ Microservices Application Architecture
 The typical flow of the commands will be based on above architecture.
 
 1. Create the app 
-```
+```shell
 copilot app init social-media-app
 ```
 
 2. Create the **TEST** environment in Region of your choice. Following creates it in ap-southeast-2.
 
-```
+```shell
 copilot env init --name test --region ap-southeast-2 --default-config
 ```
 
 3. Create the **PROD** environment in Region of your choice. Following creates it in ap-northeast-1. Notice the --prod flag. This is helpful to identify production environments. It is also automatically considered production when the pipeline is create in step .
 
-```
+```shell
 copilot env init --name prod --region ap-northeast-1 --default-config --prod
 ```
 
 4. Create a Service for "**Users**"
 
-```
+```shell
 copilot svc init --name users                       \
 --svc-type "Load Balanced Web Service"              \
 --dockerfile ./services/users/Dockerfile
@@ -95,13 +95,13 @@ copilot svc init --name users                       \
 
 5. Deploy the "**Users**" service in **TEST** environment
 
-```
+```shell
 copilot svc deploy --name users --env test
 ```
 
 6. Deploy the "**Users**" service in **PRODUCTION** environment
 
-```
+```shell
 copilot svc deploy --name users --env prod
 ```
 
@@ -109,7 +109,7 @@ __**Optionally,**__
 You can repeat steps 4-6 for every new service you wish to deploy. 
 Example, repeat following for the "**Threads**" and "**Posts**" services:
 
-```
+```shell
 copilot svc init --name threads --svc-type "Load Balanced Web Service" --dockerfile ./services/threads/Dockerfile 
 copilot svc deploy --name threads --env test
 copilot svc deploy --name threads --env prod
@@ -126,7 +126,7 @@ You can open each service in each environment using the URL provided in the outp
 
 7. Use the show command to check status of your environment deployments
 
-```
+```shell
 copilot svc show
 copilot env show --name test
 copilot env show --name prod
@@ -141,19 +141,19 @@ copilot app show
 ## Deploy Release Pipeline for the Microservices Application :
 
 1. Initialize the CodePipeline creation. This will create manifest files - pipeline.yml and buildspec.yml in the copilot folder.
-```
+```shell
 copilot pipeline init
 ```
 
 2. Add these to your git repository, commit and push your code. 
-```
+```shell
 git add copilot/pipeline.yml copilot/buildspec.yml copilot/.workspace && \
 git commit -m "Adding pipeline artifacts" &&                             \
 git push
 ```
 3. Deploy the copilot pipeline using update command and check the status.
 4. 
-```
+```shell
 copilot pipeline update
 copilot pipeline status
 
@@ -162,12 +162,12 @@ copilot pipeline status
 
 ## Monitor Logs and Status
 
-```
+```shell
 copilot svc status
 ```
 ![copilot svc status output ](/images/svc-status-output.png)
 
-```
+```shell
 copilot svc logs
 ```
 ![copilot svc logs output ](/images/svc-logs-output.png)
@@ -176,7 +176,7 @@ copilot svc logs
 
 Remember to delete all the resources once you are done testing.
 
-```
+```shell
 copilot app delete
 ```
 ![copilot app delete output ](/images/delete-app-output.png)
