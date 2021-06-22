@@ -70,19 +70,19 @@ The typical flow of the commands will be based on above architecture.
 copilot app init social-media-app
 ```
 
-2. Create the TEST environment in Region of your choice. Following creates it in ap-southeast-1.
+2. Create the **TEST** environment in Region of your choice. Following creates it in ap-southeast-2.
 
 ```
-copilot env init --name test --region ap-southeast-1 --default-config
+copilot env init --name test --region ap-southeast-2 --default-config
 ```
 
-3. Create the PROD environment in Region of your choice. Following creates it in ap-south-1. Notice the --prod flag. This is helpful to identify production environments. It is also automatically considered production when the pipeline is create in step .
+3. Create the **PROD** environment in Region of your choice. Following creates it in ap-northeast-1. Notice the --prod flag. This is helpful to identify production environments. It is also automatically considered production when the pipeline is create in step .
 
 ```
-copilot env init --name prod --region ap-south-1 --default-config --prod
+copilot env init --name prod --region ap-northeast-1 --default-config --prod
 ```
 
-4. Create a Service for "Users"
+4. Create a Service for "**Users**"
 
 ```
 copilot svc init --name users                       \
@@ -90,13 +90,13 @@ copilot svc init --name users                       \
 --dockerfile ./services/users/Dockerfile
 ```
 
-5. Deploy the "Users" service in TEST environment
+5. Deploy the "**Users**" service in **TEST** environment
 
 ```
 copilot svc deploy --name users --env test
 ```
 
-6. Deploy the "Users" service in PRODUCTION environment
+6. Deploy the "**Users**" service in **PRODUCTION** environment
 
 ```
 copilot svc deploy --name users --env prod
@@ -109,7 +109,7 @@ copilot svc show
 ```
 
 You can repeat steps 4-7 for every new service you wish to deploy. 
-Example, repeat following for the "Threads" and "Posts" services:
+Example, repeat following for the "**Threads**" and "**Posts**" services:
 
 ```
 copilot svc init --name threads --svc-type "Load Balanced Web Service" --dockerfile ./services/threads/Dockerfile 
@@ -124,7 +124,7 @@ copilot svc deploy --name posts --env prod
 copilot svc show
 ```
 
-You can open each service in each environment using the URL provided in the output. Make sure to add '/api/service-name' to view each service individually.
+You can open each service in each environment using the URL provided in the output. Make sure to add __'/api/service-name'__ to view each service individually.
 
 ## Deploy Release Pipeline for the Microservices Application :
 
