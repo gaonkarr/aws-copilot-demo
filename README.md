@@ -13,7 +13,7 @@ You will need to have the latest version of the AWS CLI installed and configured
 
 After installing the AWS CLI, simply run the 'aws configure' command once. This setups the default profile in your environment.
 
-If you need help installing and configuring, please follow the link below:
+If you need help installing and configuring, please follow the links below:
 
 [Installing the AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
@@ -30,7 +30,10 @@ Installing AWS Copilot is easy. Checkout the [manual instructions](https://aws.g
 For Linux x86 (64-bit), use following command :
 
 ``` shell
-curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux && chmod +x copilot && sudo mv copilot /usr/local/bin/copilot && copilot --help
+curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux && \
+chmod +x copilot &&                                 \
+sudo mv copilot /usr/local/bin/copilot &&           \
+copilot --help
 ```
 
 
@@ -82,7 +85,9 @@ copilot env init --name prod --region ap-south-1 --default-config --prod
 4. Create a Service for "Users"
 
 ```
-copilot svc init --dockerfile ./services/users/Dockerfile --name users --svc-type "Load Balanced Web Service"
+copilot svc init --name users                       \
+--svc-type "Load Balanced Web Service"              \
+--dockerfile ./services/users/Dockerfile
 ```
 
 5. Deploy the "Users" service in TEST environment
@@ -107,13 +112,13 @@ You can repeat steps 4-7 for every new service you wish to deploy.
 Example, repeat following for the "Threads" and "Posts" services:
 
 ```
-copilot svc init --dockerfile ./services/threads/Dockerfile --name threads --svc-type "Load Balanced Web Service"
+copilot svc init --name threads --svc-type "Load Balanced Web Service" --dockerfile ./services/threads/Dockerfile 
 copilot svc deploy --name threads --env test
 copilot svc deploy --name threads --env prod
 copilot svc show
 
 
-copilot svc init --dockerfile ./services/posts/Dockerfile --name posts --svc-type "Load Balanced Web Service"
+copilot svc init  --name posts --svc-type "Load Balanced Web Service" --dockerfile ./services/posts/Dockerfile
 copilot svc deploy --name posts --env test
 copilot svc deploy --name posts --env prod
 copilot svc show
@@ -125,7 +130,9 @@ You can open each service in each environment using the URL provided in the outp
 
 ```
 copilot pipeline init
-git add copilot/pipeline.yml copilot/buildspec.yml copilot/.workspace && git commit -m "Adding pipeline artifacts" && git push
+git add copilot/pipeline.yml copilot/buildspec.yml copilot/.workspace && \
+git commit -m "Adding pipeline artifacts" &&                             \
+git push
 
 copilot pipeline update
 copilot pipeline status
