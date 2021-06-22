@@ -58,7 +58,7 @@ In real world, you would have a microservices application to be deployed. Follow
 Microservices Application Architecture 
 ![Sample Application Architecture ](/images/sample-app-architecture.png)
 
-[Video]
+![Architecture - Microservices Deployment with copilot ](/images/Microservices-Architecture.gif)
 
 The typical flow of the commands will be based on above architecture.
 
