@@ -16,6 +16,7 @@ After installing the AWS CLI, simply run the 'aws configure' command once. This 
 If you need help installing and configuring, please follow the link below:
 
 [Installing the AWS CLI ](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+
 [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 The easiest way is to [create an AWS Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial-create-environment.html#tutorial-create-environment-console) that comes pre-built with pre-requisites. Just run 'aws configure' once and you are good to go.
@@ -55,7 +56,7 @@ This will clone the AWS sample app, and initiate the deployment of the applicati
 In real world, you would have a microservices application to be deployed. Following will walk you through individual commands of Copilot that can deployed individual components of your microservices application, build a release pipeline and showcase how can view logs & health status of your application.
 
 Microservices Application Architecture 
-![Sample Application Architecture ](../images/sample-app-architecture.png)
+![Sample Application Architecture ](/images/sample-app-architecture.png)
 
 [Video]
 
@@ -81,7 +82,7 @@ copilot env init --name prod --region ap-south-1 --default-config --prod
 4. Create a Service for "Users"
 
 ```
-copilot svc init --dockerfile ./services/users/Dockerfile --name 	users --svc-type "Load Balanced Web Service"
+copilot svc init --dockerfile ./services/users/Dockerfile --name users --svc-type "Load Balanced Web Service"
 ```
 
 5. Deploy the "Users" service in TEST environment
@@ -102,24 +103,25 @@ copilot svc deploy --name users --env prod
 copilot svc show
 ```
 
-You can repeat steps 4-7 for every new service you wish to deploy. Example, repeat following for the "Threads" and "Posts" services.
+You can repeat steps 4-7 for every new service you wish to deploy. 
+Example, repeat following for the "Threads" and "Posts" services:
 
 ```
 copilot svc init --dockerfile ./services/threads/Dockerfile --name threads --svc-type "Load Balanced Web Service"
 copilot svc deploy --name threads --env test
 copilot svc deploy --name threads --env prod
 copilot svc show
+
+
 copilot svc init --dockerfile ./services/posts/Dockerfile --name posts --svc-type "Load Balanced Web Service"
 copilot svc deploy --name posts --env test
 copilot svc deploy --name posts --env prod
 copilot svc show
 ```
 
-You can open each service in each environment using the URL provided in the output. Make sure to add '/api/<service-name>' to view each service individually.
+You can open each service in each environment using the URL provided in the output. Make sure to add '/api/service-name' to view each service individually.
 
 ## Deploy Release Pipeline for the Microservices Application :
-
-
 
 ```
 copilot pipeline init
