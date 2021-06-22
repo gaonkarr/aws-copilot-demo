@@ -5,10 +5,11 @@
 This is a reference architecture that shows a containerized Node.js microservices application to using AWS Copilot.
 
 The microservices app was developed from the AWS Sample [here](https://github.com/awslabs/amazon-ecs-nodejs-microservices/tree/master/3-microservices)
-The sample has 3 services defined behind an Amazon Application Load Balancer (ALB), and we create rules on the ALB that direct requests that match a specific path to a specific service.
+
+The sample has 3 services - users,threads,posts - defined behind an Amazon Application Load Balancer (ALB), and we create rules on the ALB that direct requests that match a specific path to a specific service.
 So each service will only serve one particular class of REST object, and nothing else. This will give us some significant advantages in our ability to independently monitor and independently scale each service.
 
-### Prerequisites
+### Pre-requisites
 You will need to have the latest version of the AWS CLI installed and configured before running the deployment script. 
 
 After installing the AWS CLI, simply run the 'aws configure' command once. This setups the default profile in your environment.
@@ -33,9 +34,11 @@ For Linux x86 (64-bit), use following command :
 curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux && \
 chmod +x copilot &&                                 \
 sudo mv copilot /usr/local/bin/copilot &&           \
-copilot --help
+copilot --help &&                                 \
+copilot --version
 ```
 
+At the time of writing this Readme, copilot was at version: v1.8.0
 
 ## Deploy Sample Application with ONE command only :
 
