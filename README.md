@@ -70,6 +70,8 @@ The typical flow of the commands will be based on above architecture.
 
 1. Create the app 
 ```shell
+git clone https://github.com/gaonkarr/aws-copilot-demo.git && \ 
+cd aws-copilot-demo &&                                        \
 copilot app init social-media-app
 ```
 
