@@ -23,6 +23,12 @@
       "username": "jake",
       "name": "Jake the Dog",
       "bio": "Former criminal, now magical dog adventurer, and father"
+    },
+    {
+      "id": 5,
+      "username": "Rohini",
+      "name": "Copilot demo",
+      "bio": "cloud9 to showcase copilot"
     }
   ]
 }
