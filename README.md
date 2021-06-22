@@ -102,20 +102,8 @@ copilot svc deploy --name users --env test
 copilot svc deploy --name users --env prod
 ```
 
-7. Use the show command to check status of your environment deployments
-
-```
-copilot svc show
-copilot env show
-copilot app show
-```
-
-![copilot svc show output ](/images/svc-show-output.png)
-![copilot env show test output ](/images/env-test-show-output.png)
-![copilot env show prod output ](/images/env-prod-show-output.png)
-![copilot app show output ](/images/app-show-output.png)
-
-You can repeat steps 4-7 for every new service you wish to deploy. 
+__**Optionally,**__
+You can repeat steps 4-6 for every new service you wish to deploy. 
 Example, repeat following for the "**Threads**" and "**Posts**" services:
 
 ```
@@ -133,14 +121,36 @@ copilot svc show
 
 You can open each service in each environment using the URL provided in the output. Make sure to add __'/api/service-name'__ to view each service individually.
 
-## Deploy Release Pipeline for the Microservices Application :
+7. Use the show command to check status of your environment deployments
 
 ```
+copilot svc show
+copilot env show --name test
+copilot env show --name prod
+copilot app show
+```
+
+![copilot svc show output ](/images/svc-show-output.png)
+![copilot env show test output ](/images/env-test-show-output.png)
+![copilot env show prod output ](/images/env-prod-show-output.png)
+![copilot app show output ](/images/app-show-output.png)
+
+## Deploy Release Pipeline for the Microservices Application :
+
+1. Initialize the CodePipeline creation. This will create manifest files - pipeline.yml and buildspec.yml in the copilot folder.
+```
 copilot pipeline init
+```
+
+2. Add these to your git repository, commit and push your code. 
+```
 git add copilot/pipeline.yml copilot/buildspec.yml copilot/.workspace && \
 git commit -m "Adding pipeline artifacts" &&                             \
 git push
-
+```
+3. Deploy the copilot pipeline using update command and check the status.
+4. 
+```
 copilot pipeline update
 copilot pipeline status
 
@@ -152,10 +162,21 @@ copilot pipeline status
 ```
 copilot svc status
 ```
+![copilot svc status output ](/images/svc-status-output.png)
 
 ```
+copilot svc logs
+```
+![copilot svc logs output ](/images/svc-logs-output.png)
+
+## Clean up
+
+Remember to delete all the resources once you are done testing.
 
 ```
+copilot app delete
+```
+![copilot app delete output ](/images/delete-app-output.png)
 
 ## References & More
 
