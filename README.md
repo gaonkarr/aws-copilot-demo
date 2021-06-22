@@ -106,7 +106,14 @@ copilot svc deploy --name users --env prod
 
 ```
 copilot svc show
+copilot env show
+copilot app show
 ```
+
+![copilot svc show output ](/images/svc-show-output.png)
+![copilot env show test output ](/images/env-test-show-output.png)
+![copilot env show prod output ](/images/env-prod-show-output.png)
+![copilot app show output ](/images/app-show-output.png)
 
 You can repeat steps 4-7 for every new service you wish to deploy. 
 Example, repeat following for the "**Threads**" and "**Posts**" services:
@@ -138,7 +145,17 @@ copilot pipeline update
 copilot pipeline status
 
 ```
+![copilot pipeline status output ](/images/pipeline-status-output.png)
 
+## Monitor Logs and Status
+
+```
+copilot svc status
+```
+
+```
+
+```
 
 ## References & More
 
