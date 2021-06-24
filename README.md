@@ -2,12 +2,15 @@
 # AWS Copilot Sample microservices demonstration
 
 
-This is a reference architecture that shows a containerized Node.js microservices application to using AWS Copilot.
+- [**1. Pre-requisites**](#1-pre-requisites)
+- [**2. Install AWS Copilot**](#2-install-aws-copilot)
+- [**3. Deploy Sample Application with ONE command only**](#3-deploy-sample-application-with-one-command-only)
+- [**4. Deploy Microservices Application**](#4-deploy-microservices-application)
+- [**5. Deploy Release Pipeline for the Microservices Application**](#5-deploy-release-pipeline-for-the-microservices-application)
+- [**6. Clean up**](#6-clean-up)
+- [**7. References and More**](#7-reference-and-more)
 
-The microservices app was developed from the AWS Sample [here](https://github.com/awslabs/amazon-ecs-nodejs-microservices/tree/master/3-microservices)
 
-The sample has 3 services - users,threads,posts - defined behind an Amazon Application Load Balancer (ALB), and we create rules on the ALB that direct requests that match a specific path to a specific service.
-So each service will only serve one particular class of REST object, and nothing else. This will give us some significant advantages in our ability to independently monitor and independently scale each service.
 
 ### Pre-requisites
 You will need to have the latest version of the AWS CLI installed and configured before running the deployment script. 
@@ -21,7 +24,6 @@ If you need help installing and configuring, please follow the links below:
 [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
 The easiest way is to [create an AWS Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial-create-environment.html#tutorial-create-environment-console) that comes pre-built with pre-requisites. Just run 'aws configure' once and you are good to go.
-
 
 
 ## Install AWS Copilot
@@ -58,8 +60,16 @@ copilot init --app demo                      \
 This will clone the AWS sample app, and initiate the deployment of the application. It will take few minutes for it to automatically create basic networking infrastructure, build your docker image, create a repository in Amazon ECR, push the docker image, create the Amazon ECS Clusters, ALB, and finally create tasks. In the end, it will provide you with a URL that points to your deployed sample application.
 
 ## Deploy Microservices Application :
-
 In real world, you would have a microservices application to be deployed. Following will walk you through individual commands of Copilot that can deployed individual components of your microservices application, build a release pipeline and showcase how can view logs & health status of your application.
+
+**About the Sample Microservices Application**
+This is a reference architecture that shows a containerized Node.js microservices application to using AWS Copilot.
+
+The microservices app was developed from the AWS Sample [here](https://github.com/awslabs/amazon-ecs-nodejs-microservices/tree/master/3-microservices)
+
+The sample has 3 services - users,threads,posts - defined behind an Amazon Application Load Balancer (ALB), and we create rules on the ALB that direct requests that match a specific path to a specific service.
+So each service will only serve one particular class of REST object, and nothing else. This will give us some significant advantages in our ability to independently monitor and independently scale each service.
+
 
 Microservices Application Architecture 
 ![Sample Application Architecture ](/images/sample-app-architecture.png)
@@ -95,19 +105,29 @@ copilot svc init --name users                       \
 --dockerfile ./services/users/Dockerfile
 ```
 
-5. Deploy the "**Users**" service in **TEST** environment
+5. Step 4 creates a manifest file for the service under folder 'copilot/users/manifest.yaml'. In the manifest file, can make any changes to the default configurations for the service. Open this file and add following code to the end. This will tell configure the test environment with 1 task while the prod environment will have 2 tasks. Saved the file before proceeding. 
+
+```YAML
+environments:
+  test:
+    count: 1               # Number of tasks to run for the "test" environment.
+  prod:
+    count: 2               # Number of tasks to run for the "prod" environment.
+```
+
+6. Deploy the "**Users**" service in **TEST** environment
 
 ```shell
 copilot svc deploy --name users --env test
 ```
 
-6. Deploy the "**Users**" service in **PRODUCTION** environment
+7. Deploy the "**Users**" service in **PRODUCTION** environment
 
 ```shell
 copilot svc deploy --name users --env prod
 ```
 
-__**Optionally,**__
+***Optionally,***
 You can repeat steps 4-6 for every new service you wish to deploy. 
 Example, repeat following for the "**Threads**" and "**Posts**" services:
 
@@ -183,7 +203,7 @@ copilot app delete
 ```
 ![copilot app delete output ](/images/delete-app-output.png)
 
-## References & More
+## References and more
 
 Explore advanced features – addons, storage, sidecars, etc
 
