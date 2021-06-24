@@ -12,8 +12,15 @@
 - [**References and More**](#reference-and-more)
 
 
+AWS Copilot is an open source command line interface that makes it easy for developers to **BUILD**,**RELEASE**, and **OPERATE** production ready containerized applications on AWS App Runner, Amazon ECS, and AWS Fargate.
+You can start simple with just a Dockerfile and then grow with addons. You can work across multiple AWS accounts, and regions. Add more automation and have more visibility in your application’s health. 
 
-### Pre-requisites
+Using AWS CloudFormation, It will automate all this so you can only work on building efficient containers and copilot will take care of How you build, release and operate on your code. It is interactive way deploys some standard application environments for you to quickly setup your microservices application. 
+
+For example, a 'Load Balanced Web Service' would look something like this : 
+![Load Balanced Web Service Architecture with AWS Copilot ](/images/Load-balanced-web-service-copilot.png)
+
+## Pre-requisites
 You will need to have the latest version of the AWS CLI installed and configured before running the deployment script. 
 
 After installing the AWS CLI, simply run the 'aws configure' command once. This setups the default profile in your environment.
