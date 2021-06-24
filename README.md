@@ -2,13 +2,13 @@
 # AWS Copilot Sample microservices demonstration
 
 
-- [**1. Pre-requisites**](#1-pre-requisites)
-- [**2. Install AWS Copilot**](#2-install-aws-copilot)
-- [**3. Deploy Sample Application with ONE command only**](#3-deploy-sample-application-with-one-command-only)
-- [**4. Deploy Microservices Application**](#4-deploy-microservices-application)
-- [**5. Deploy Release Pipeline for the Microservices Application**](#5-deploy-release-pipeline-for-the-microservices-application)
-- [**6. Clean up**](#6-clean-up)
-- [**7. References and More**](#7-reference-and-more)
+- [**Pre-requisites**](#pre-requisites)
+- [**Install AWS Copilot**](#install-aws-copilot)
+- [**Deploy Sample Application with ONE command only**](#deploy-sample-application-with-one-command-only)
+- [**Deploy Microservices Application**](#deploy-microservices-application)
+- [**Deploy Release Pipeline for the Microservices Application**](#deploy-release-pipeline-for-the-microservices-application)
+- [**Clean up**](#clean-up)
+- [**References and More**](#reference-and-more)
 
 
 
