@@ -7,6 +7,7 @@
 - [**Deploy Sample Application with ONE command only**](#deploy-sample-application-with-one-command-only)
 - [**Deploy Microservices Application**](#deploy-microservices-application)
 - [**Deploy Release Pipeline for the Microservices Application**](#deploy-release-pipeline-for-the-microservices-application)
+- [**Monitor Logs and Status**](#monitor-logs-and-status)
 - [**Clean up**](#clean-up)
 - [**References and More**](#reference-and-more)
 
