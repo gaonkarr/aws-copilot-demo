@@ -42,7 +42,7 @@ copilot --version
 
 At the time of writing this Readme, copilot was at version: v1.8.0
 
-## Deploy Sample Application with ONE command only :
+## Deploy Sample Application with ONE command only
 
 To deploy a sample Load Balanced Web Service application with just one command, run the following command :
 
@@ -59,7 +59,7 @@ copilot init --app demo                      \
 
 This will clone the AWS sample app, and initiate the deployment of the application. It will take few minutes for it to automatically create basic networking infrastructure, build your docker image, create a repository in Amazon ECR, push the docker image, create the Amazon ECS Clusters, ALB, and finally create tasks. In the end, it will provide you with a URL that points to your deployed sample application.
 
-## Deploy Microservices Application :
+## Deploy Microservices Application
 In real world, you would have a microservices application to be deployed. Following will walk you through individual commands of Copilot that can deployed individual components of your microservices application, build a release pipeline and showcase how can view logs & health status of your application.
 
 **About the Sample Microservices Application**
@@ -160,7 +160,7 @@ copilot app show
 ![copilot env show prod output ](/images/env-prod-show-output.png)
 ![copilot app show output ](/images/app-show-output.png)
 
-## Deploy Release Pipeline for the Microservices Application :
+## Deploy Release Pipeline for the Microservices Application
 
 1. Initialize the CodePipeline creation. This will create manifest files - pipeline.yml and buildspec.yml in the copilot folder.
 ```shell
@@ -183,16 +183,17 @@ copilot pipeline status
 ![copilot pipeline status output ](/images/pipeline-status-output.png)
 
 ## Monitor Logs and Status
+```shell
+copilot svc logs
+```
+![copilot svc logs output ](/images/svc-logs-output.png)
 
 ```shell
 copilot svc status
 ```
 ![copilot svc status output ](/images/svc-status-output.png)
 
-```shell
-copilot svc logs
-```
-![copilot svc logs output ](/images/svc-logs-output.png)
+
 
 ## Clean up
 
