@@ -31,6 +31,8 @@ If you need help installing and configuring, please follow the links below:
 
 [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 
+[Docker Desktop](https://www.docker.com/products/docker-desktop)
+
 The easiest way is to [create an AWS Cloud9 environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial-create-environment.html#tutorial-create-environment-console) that comes pre-built with pre-requisites. Just run 'aws configure' once and you are good to go.
 
 
